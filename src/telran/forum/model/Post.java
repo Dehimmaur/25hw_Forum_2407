@@ -3,13 +3,18 @@ package telran.forum.model;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-public class Post {
+public class Post implements Comparable<Post>{
     int postId;
     String title;
     String author;
     String content;
     LocalDateTime date;
     int likes;
+
+    @Override
+    public int compareTo(Post post) {
+        return 0;
+    }
 
     public Post(int postId, String title, String author, String content) {
         this.postId = postId;

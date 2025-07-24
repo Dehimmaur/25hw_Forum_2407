@@ -5,7 +5,7 @@ import telran.forum.model.Post;
 import java.time.LocalDate;
 
 public interface Forum {
-    
+
     boolean addPost(Post post);
 
     Post removePost(int postId);
