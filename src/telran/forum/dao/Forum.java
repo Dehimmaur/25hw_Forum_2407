@@ -6,6 +6,10 @@ import java.time.LocalDate;
 
 public interface Forum {
 
+
+
+
+    // sdsadsadasdsda
     boolean addPost(Post post);
 
     Post removePost(int postId);
