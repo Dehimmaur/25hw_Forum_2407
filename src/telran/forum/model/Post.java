@@ -1,5 +1,6 @@
 package telran.forum.model;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -10,6 +11,7 @@ public class Post implements Comparable<Post>{
     String content;
     LocalDateTime date;
     int likes;
+    int disLikes;
 
     @Override
     public int compareTo(Post post) {
@@ -23,8 +25,21 @@ public class Post implements Comparable<Post>{
         this.content = content;
     }
 
+    public Post(int postId, String title, String author, String content, LocalDateTime date) {
+        this.postId = postId;
+        this.title = title;
+        this.author = author;
+        this.content = content;
+        this.date = date;
+    }
+
+
     public int addLike(){
         return ++this.likes;
+    }
+
+    public int disLike() {
+        return ++this.disLikes;
     }
 
     @Override

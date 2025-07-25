@@ -18,8 +18,8 @@ public class ForumImpl implements Forum {
         }
 
         if(size < posts.length >> 2) {
-            int remuvLength = posts.length < 10 ? 10 : posts.length >> 1;
-            posts = Arrays.copyOf(posts, remuvLength);
+            int removeLength = posts.length < 10 ? 10 : posts.length >> 1;
+            posts = Arrays.copyOf(posts, removeLength);
         }
     }
 
