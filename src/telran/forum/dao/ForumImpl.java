@@ -25,10 +25,10 @@ public class ForumImpl implements Forum {
 
     @Override
     public boolean addPost(Post post) {
+        forumСhangeSize();
         if (size == posts.length || post == null || getPostById(post.getPostId()) != null) {
             return false;
         }
-        forumСhangeSize();
         int index = Arrays.binarySearch(posts, 0, size, post);
         index = index < 0 ? -index - 1 : index;
         System.arraycopy(posts, index, posts, index + 1, size - index);
