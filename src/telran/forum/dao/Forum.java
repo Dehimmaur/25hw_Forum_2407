@@ -20,4 +20,6 @@ public interface Forum {
 
     int size();
 
+    int getLikesByAuthor(String author);
+
 }

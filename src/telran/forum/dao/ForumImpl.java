@@ -90,7 +90,22 @@ public class ForumImpl implements Forum {
 
     @Override
     public Post[] getPostsByAuthor(String author, LocalDate dateFrom, LocalDate dateTo) {
-        return new Post[0];
+        Post[] temp = new Post[posts.length];
+        int count = 0;
+
+        for (Post post : posts) {
+            if (post != null && post.getAuthor().equals(author)) {
+                LocalDate postDate = post.getDate().toLocalDate();
+                if (postDate.compareTo(dateFrom) >= 0 && postDate.compareTo(dateTo) <= 0) {
+                    temp[count++] = post;
+                }
+            }
+        }
+        return Arrays.copyOf(temp, count);
+    }
+
+    public int getLikesByAuthor(String author) {
+        return 0;
     }
 
     @Override
