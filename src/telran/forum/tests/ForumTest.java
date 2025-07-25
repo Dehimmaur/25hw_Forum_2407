@@ -99,8 +99,17 @@ class ForumTest {
 
 
         assertArrayEquals(expected1, forum.getPostsByAuthor("Author10", dateFrom, dateTo));
+    }
 
+    void getLikesByAuthor() {
+        Post newPost1 = new Post(10, "Title10", "Author10", "Hello hoverim!!!", 10);
 
+        assertArrayEquals(10, forum.getLikesByAuthor(newPost1.getAuthor()));
+
+        newPost1.addLike();
+        newPost1.addLike();
+
+        assertArrayEquals(12, forum.getLikesByAuthor(newPost1.getAuthor()));
     }
 
 }

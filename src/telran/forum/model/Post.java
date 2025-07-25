@@ -10,7 +10,6 @@ public class Post implements Comparable<Post>{
     private String content;
     private LocalDateTime date;
     private int likes;
-    private int disLikes;
 
     @Override
     public int compareTo(Post post) {
@@ -32,13 +31,18 @@ public class Post implements Comparable<Post>{
         this.date = date;
     }
 
+    public Post(int postId, String title, String author, String content, int likes) {
+        this.postId = postId;
+        this.title = title;
+        this.author = author;
+        this.content = content;
+        this.date = date;
+        this.likes = likes;
+    }
+
 
     public int addLike(){
         return ++this.likes;
-    }
-
-    public int disLike() {
-        return ++this.disLikes;
     }
 
     @Override
