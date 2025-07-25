@@ -7,7 +7,9 @@ import telran.forum.dao.Forum;
 import telran.forum.dao.ForumImpl;
 import telran.forum.model.Post;
 
-import java.util.Arrays;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -75,5 +77,30 @@ class ForumTest {
         assertArrayEquals(expected2, forum.getPostsByAuthor("Author2"));
     }
 
+    @Test
+    void getPostsByAuthorByDate() {
+        Post newPost1 = new Post(10, "Title10", "Author10", "Hello hoverim!!!", LocalDateTime.parse("2025-07-15'T'23:20:10", DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss")));
+        Post newPost2 = new Post(20, "Title20", "Author10", "Hello hoverim!!!", LocalDateTime.parse("2025-07-16'T'23:20:10", DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss")));
+        Post newPost3 = new Post(30, "Title30", "Author10", "Hello hoverim!!!", LocalDateTime.parse("2025-07-17'T'23:20:10", DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss")));
+        Post newPost4 = new Post(40, "Title40", "Author10", "Hello hoverim!!!", LocalDateTime.parse("2025-07-18'T'23:20:10", DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss")));
+        Post newPost5 = new Post(50, "Title50", "Author10", "Hello hoverim!!!", LocalDateTime.parse("2025-07-19'T'23:20:10", DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss")));
+        Post newPost6 = new Post(60, "Title60", "Author10", "Hello hoverim!!!", LocalDateTime.parse("2025-07-20'T'23:20:10", DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss")));
+
+        forum.addPost(newPost1);
+        forum.addPost(newPost2);
+        forum.addPost(newPost3);
+        forum.addPost(newPost4);
+        forum.addPost(newPost5);
+        forum.addPost(newPost6);
+
+        Post[] expected1 = {newPost2, newPost3, newPost4, newPost5};
+        LocalDate dateFrom = LocalDate.of(2025, 7, 16);
+        LocalDate dateTo = LocalDate.of(2025, 7, 19);
+
+
+        assertArrayEquals(expected1, forum.getPostsByAuthor("Author10", dateFrom, dateTo));
+        
+
+    }
 
 }
