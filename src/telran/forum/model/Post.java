@@ -13,7 +13,7 @@ public class Post implements Comparable<Post>{
 
     @Override
     public int compareTo(Post post) {
-        return 0;
+        return Integer.compare(this.postId, post.postId);
     }
 
     public Post(int postId, String title, String author, String content) {

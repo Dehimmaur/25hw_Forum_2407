@@ -7,6 +7,8 @@ import telran.forum.dao.Forum;
 import telran.forum.dao.ForumImpl;
 import telran.forum.model.Post;
 
+import java.util.Arrays;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ForumTest {
@@ -69,9 +71,8 @@ class ForumTest {
         Post[] expected2 = {oldPost2, newPost2};
         forum.addPost(newPost1);
         forum.addPost(newPost2);
-
-        assertEquals(expected1, forum.getPostsByAuthor(oldPost1.getAuthor()));
-        assertEquals(expected2, forum.getPostsByAuthor("Author2"));
+        assertArrayEquals(expected1, forum.getPostsByAuthor(oldPost1.getAuthor()));
+        assertArrayEquals(expected2, forum.getPostsByAuthor("Author2"));
     }
 
 

@@ -60,18 +60,15 @@ public class ForumImpl implements Forum {
     }
 
     @Override
-    public Post[] getPostsByAuthor(String author) {//я здесь
-        //int sizeResult = 1;
+    public Post[] getPostsByAuthor(String author) {
         Post[] result = new Post[size];
-        int j = 0;
+        int l = 0;
         for (int i = 0; i < size; i++) {
-            if (posts[i].getAuthor().equals(author)) {
-
-                result[j++] = posts[i];
-                //sizeResult++;
+            if (author != null && author.equals(posts[i].getAuthor())) {
+                result[l++] = posts[i];
             }
         }
-        return Arrays.copyOf(result, j);
+        return Arrays.copyOf(result, l);
     }
 
 
