@@ -8,7 +8,19 @@ public class ForumImpl implements Forum {
     private Post[] posts;
     private int size;
     public ForumImpl() {
-        posts = new Post[10];
+        posts = new Post[0];
+    }
+
+    private void forumСhangeSize() {
+        if(size > posts.length - 10) {
+            int addLength = posts.length == 0 ? 10 : posts.length << 1;
+            posts = Arrays.copyOf(posts, addLength);
+        }
+
+        if(size < posts.length >> 2) {
+            int remuvLength = posts.length < 10 ? 10 : posts.length >> 1;
+            posts = Arrays.copyOf(posts, remuvLength);
+        }
     }
 
     @Override
@@ -16,6 +28,7 @@ public class ForumImpl implements Forum {
         if (size == posts.length || post == null || getPostById(post.getPostId()) != null) {
             return false;
         }
+        forumСhangeSize();
         int index = Arrays.binarySearch(posts, 0, size, post);
         index = index < 0 ? -index - 1 : index;
         System.arraycopy(posts, index, posts, index + 1, size - index);
@@ -32,6 +45,7 @@ public class ForumImpl implements Forum {
                 Post removedPost = posts[i];
                 System.arraycopy(posts, i + 1, posts, i, size - i - 1);
                 posts[--size] = null;
+                forumСhangeSize();
                 return removedPost;
             }
         }
