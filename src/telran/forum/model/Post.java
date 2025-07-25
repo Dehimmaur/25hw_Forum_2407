@@ -5,13 +5,13 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class Post implements Comparable<Post>{
-    int postId;
-    String title;
-    String author;
-    String content;
-    LocalDateTime date;
-    int likes;
-    int disLikes;
+    private final int postId;
+    private String title;
+    private String author;
+    private String content;
+    private LocalDateTime date;
+    private int likes;
+    private int disLikes;
 
     @Override
     public int compareTo(Post post) {

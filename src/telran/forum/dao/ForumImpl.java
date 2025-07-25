@@ -7,6 +7,8 @@ import java.util.Arrays;
 public class ForumImpl implements Forum {
     private Post[] posts;
     private int size;
+
+
     public ForumImpl() {
         posts = new Post[0];
     }
