@@ -18,11 +18,6 @@ public class ForumImpl implements Forum {
             int addLength = posts.length == 0 ? 10 : posts.length << 1;
             posts = Arrays.copyOf(posts, addLength);
         }
-
-        if(size < posts.length >> 2) {
-            int removeLength = posts.length < 10 ? 10 : posts.length >> 1;
-            posts = Arrays.copyOf(posts, removeLength);
-        }
     }
 
     @Override
@@ -47,7 +42,6 @@ public class ForumImpl implements Forum {
                 Post removedPost = posts[i];
                 System.arraycopy(posts, i + 1, posts, i, size - i - 1);
                 posts[--size] = null;
-                forumСhangeSize();
                 return removedPost;
             }
         }

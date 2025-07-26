@@ -105,7 +105,9 @@ class ForumTest {
     @Test
     void getLikesByAuthor() {
         Post newPost1 = new Post(10, "Title10", "Author10", "Hello hoverim!!!", 10);
+
         forum.addPost(newPost1);
+        
         assertEquals(10, forum.getLikesByAuthor(newPost1.getAuthor()));
 
         newPost1.addLike();
