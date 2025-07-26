@@ -105,15 +105,17 @@ class ForumTest {
     @Test
     void getLikesByAuthor() {
         Post newPost1 = new Post(10, "Title10", "Author10", "Hello hoverim!!!", 10);
-
         forum.addPost(newPost1);
-        
         assertEquals(10, forum.getLikesByAuthor(newPost1.getAuthor()));
 
         newPost1.addLike();
         newPost1.addLike();
-
         assertEquals(12, forum.getLikesByAuthor(newPost1.getAuthor()));
+
+        Post newPost2 = new Post(20, "Title20", "Author10", "Hello hoverim!!!", 15);
+        forum.addPost(newPost2);
+        assertEquals(27, forum.getLikesByAuthor(newPost1.getAuthor()));
+
     }
 
 
